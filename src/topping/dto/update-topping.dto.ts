@@ -2,7 +2,7 @@ import { PartialType } from '@nestjs/mapped-types';
 import { CreateToppingDto } from './create-topping.dto';
 import { IsNumber, IsOptional, IsPositive, IsString, Length } from 'class-validator';
 
-export class UpdateToppingDto {
+export class UpdateToppingDto extends PartialType(CreateToppingDto){
     @IsOptional()
     @IsString()
     @Length(5,20)
