@@ -4,6 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { SaborModule } from './sabor/sabor.module';
 import { ToppingModule } from './topping/topping.module';
+import { HeladoModule } from './helado/helado.module';
+import { DetalleHeladoTopping } from './detalle_helado_topping/entities/detalle_helado_topping.entity';
+import { DetalleHeladoSabor } from './detalle_helado_sabor/entities/detalle_helado_sabor.entity';
+
 
 @Module({
   imports: [
@@ -23,11 +27,15 @@ import { ToppingModule } from './topping/topping.module';
         database: Config.get('DB_NAME'),
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: true,
+        autoLoadEntities: true,
       }),
     }),
     UserModule,
     SaborModule,
     ToppingModule,
-  ],
+    DetalleHeladoTopping,
+    HeladoModule,
+    DetalleHeladoSabor,
+],
 })
 export class AppModule {}

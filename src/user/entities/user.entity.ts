@@ -1,4 +1,5 @@
-import { Column, PrimaryGeneratedColumn } from "typeorm";
+import { Helado } from "src/helado/entities/helado.entity";
+import { Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 export class User {
     @PrimaryGeneratedColumn()
@@ -11,4 +12,7 @@ export class User {
     email: string;
     @Column()
     telefono?: string;
+    @OneToMany(() => Helado, (helado) => helado.user)
+    Helados: Helado[];
+    
 }

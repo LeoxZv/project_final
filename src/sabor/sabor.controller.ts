@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { SaborService } from './sabor.service';
 import { CreateSaborDto } from './dto/create-sabor.dto';
 import { UpdateSaborDto } from './dto/update-sabor.dto';
@@ -8,6 +8,7 @@ export class SaborController {
   constructor(private readonly saborService: SaborService) {}
 
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   create(@Body() body: CreateSaborDto) {
     return this.saborService.create(body);
   }
@@ -28,6 +29,7 @@ export class SaborController {
   }
 
   @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {
     return this.saborService.remove(+id);
   }
