@@ -5,10 +5,6 @@ import { UserModule } from './user/user.module';
 import { SaborModule } from './sabor/sabor.module';
 import { ToppingModule } from './topping/topping.module';
 import { HeladoModule } from './helado/helado.module';
-import { DetalleHeladoTopping } from './detalle_helado_topping/entities/detalle_helado_topping.entity';
-import { DetalleHeladoSabor } from './detalle_helado_sabor/entities/detalle_helado_sabor.entity';
-
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -33,9 +29,7 @@ import { DetalleHeladoSabor } from './detalle_helado_sabor/entities/detalle_hela
     UserModule,
     SaborModule,
     ToppingModule,
-    DetalleHeladoTopping,
     HeladoModule,
-    DetalleHeladoSabor,
-],
+  ],
 })
 export class AppModule {}

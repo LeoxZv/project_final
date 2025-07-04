@@ -25,29 +25,32 @@ export class HeladoService {
     @InjectRepository(DetalleHeladoSabor)
     private detalleSaborRepository: Repository<DetalleHeladoSabor>,
     @InjectRepository(DetalleHeladoTopping)
-    private detalleToppingRepository: Repository<DetalleHeladoTopping>
-
+    private detalleToppingRepository: Repository<DetalleHeladoTopping>,
   ) {}
 
   private async calcularTotal(
     saboresData: { sabor_id: number; cantidad_bolas: number }[],
     ToppingsData: { topping_id: number; cantidad: number }[],
-  ): Promise<number>{
+  ): Promise<number> {
     let total = 0;
     //Calcular costo de sabores
-    for(const item of saboresData){
-      const sabor = await this.saboresRepository.findOneBy({id: item.sabor_id})
+    for (const item of saboresData) {
+      const sabor = await this.saboresRepository.findOneBy({
+        id: item.sabor_id,
+      });
       if (!sabor) {
-        throw new HttpException(`Sabor NOT FOUND`, HttpStatus.NOT_FOUND)
+        throw new HttpException(`Sabor NOT FOUND`, HttpStatus.NOT_FOUND);
       }
-      total += sabor.precio_bola * item.cantidad_bolas
+      total += sabor.precio_bola * item.cantidad_bolas;
     }
 
     //Calcular costo de topppings
-    for(const item of ToppingsData){
-      const topping = await this.toppingsRepository.findOneBy({id: item.topping_id})
+    for (const item of ToppingsData) {
+      const topping = await this.toppingsRepository.findOneBy({
+        id: item.topping_id,
+      });
       if (!topping) {
-        throw new HttpException(`Topping NOT FOUND`, HttpStatus.NOT_FOUND)
+        throw new HttpException(`Topping NOT FOUND`, HttpStatus.NOT_FOUND);
       }
       total += topping.precio * item.cantidad;
     }
@@ -56,12 +59,17 @@ export class HeladoService {
 
   async create(createHeladoDto: CreateHeladoDto): Promise<Helado> {
     //verificar la existencia del cliente
-    const user = await this.usersRepository.findOneBy({ id: createHeladoDto.cliente_id})
+    const user = await this.usersRepository.findOneBy({
+      id: createHeladoDto.cliente_id,
+    });
     if (!user) {
-      throw new HttpException(`Cliente NOT FOUND`, HttpStatus.NOT_FOUND)
+      throw new HttpException(`Cliente NOT FOUND`, HttpStatus.NOT_FOUND);
     }
     //calcular total del pedido
-    const total_pedido = await this.calcularTotal(createHeladoDto.sabores, createHeladoDto.toppings  || []);
+    const total_pedido = await this.calcularTotal(
+      createHeladoDto.sabores,
+      createHeladoDto.toppings || [],
+    );
 
     const helado = this.heladosRepository.create({
       cliente_id: createHeladoDto.cliente_id,
@@ -70,7 +78,7 @@ export class HeladoService {
 
     //Crear detalle sabores
 
-    helado.detallesSabores = createHeladoDto.sabores.map(s =>
+    helado.detallesSabores = createHeladoDto.sabores.map((s) =>
       this.detalleSaborRepository.create({
         sabor_id: s.sabor_id,
         cantidad_bolas: s.cantidad_bolas,
@@ -80,7 +88,7 @@ export class HeladoService {
     //crear detalle toppings (Si existen)
 
     if (createHeladoDto.toppings && createHeladoDto.toppings.length > 0) {
-      helado.detallesTopping = createHeladoDto.toppings.map(t =>
+      helado.detallesTopping = createHeladoDto.toppings.map((t) =>
         this.detalleToppingRepository.create({
           topping_id: t.topping_id,
           cantidad: t.cantidad,
@@ -92,17 +100,29 @@ export class HeladoService {
 
   async findAll(): Promise<Helado[]> {
     return this.heladosRepository.find({
-      relations:['user', 'detallesSabores', 'detallesSabores.sabor', 'detallesToppings', 'detallesToppings.topping']
+      relations: [
+        'user',
+        'detallesSabores',
+        'detallesSabores.sabor',
+        'detallesToppings',
+        'detallesToppings.topping',
+      ],
     });
   }
 
   async findOne(id: number): Promise<Helado> {
     const helado = await this.heladosRepository.findOne({
       where: { id },
-      relations:['user', 'detallesSabores', 'detallesSabores.sabor', 'detallesToppings', 'detallesToppings.topping']
+      relations: [
+        'user',
+        'detallesSabores',
+        'detallesSabores.sabor',
+        'detallesToppings',
+        'detallesToppings.topping',
+      ],
     });
     if (!helado) {
-      throw new HttpException(`Helado Not Found`, HttpStatus.NOT_FOUND)
+      throw new HttpException(`Helado Not Found`, HttpStatus.NOT_FOUND);
     }
     return helado;
   }
@@ -110,55 +130,66 @@ export class HeladoService {
   async update(id: number, updateHeladoDto: UpdateHeladoDto): Promise<Helado> {
     const helado = await this.heladosRepository.findOne({
       where: { id },
-      relations: [ 'detallesSabores', 'detallesTopping']
+      relations: ['detallesSabores', 'detallesTopping'],
     });
     if (!helado) {
-      throw new HttpException(`helado Not found`, HttpStatus.NOT_FOUND)
+      throw new HttpException(`helado Not found`, HttpStatus.NOT_FOUND);
     }
 
-    if(updateHeladoDto.sabores) {
-      await this.detalleSaborRepository.delete({ helado_id: id})
-      helado.detallesSabores = updateHeladoDto.sabores.map(s =>
+    if (updateHeladoDto.sabores) {
+      await this.detalleSaborRepository.delete({ helado_id: id });
+      helado.detallesSabores = updateHeladoDto.sabores.map((s) =>
         this.detalleSaborRepository.create({
           sabor_id: s.sabor_id,
           cantidad_bolas: s.cantidad_bolas,
-          helado_id: id
+          helado_id: id,
         }),
       );
     }
     if (updateHeladoDto.toppings) {
-      await this.detalleToppingRepository.delete({ helado_id: id })
-      helado.detallesTopping = updateHeladoDto.toppings.map(t =>
+      await this.detalleToppingRepository.delete({ helado_id: id });
+      helado.detallesTopping = updateHeladoDto.toppings.map((t) =>
         this.detalleToppingRepository.create({
           topping_id: t.topping_id,
           cantidad: t.cantidad,
-          helado_id: id
+          helado_id: id,
         }),
       );
     }
     if (updateHeladoDto.sabores || updateHeladoDto.toppings) {
-            const saboresActuales = updateHeladoDto.sabores || helado.detallesSabores.map(d => ({ sabor_id: d.sabor_id, cantidad_bolas: d.cantidad_bolas }));
-            const toppingsActuales = updateHeladoDto.toppings || helado.detallesTopping.map(d => ({ topping_id: d.topping_id, cantidad: d.cantidad }));
-            helado.total_pedido = await this.calcularTotal(saboresActuales, toppingsActuales);
+      const saboresActuales =
+        updateHeladoDto.sabores ||
+        helado.detallesSabores.map((d) => ({
+          sabor_id: d.sabor_id,
+          cantidad_bolas: d.cantidad_bolas,
+        }));
+      const toppingsActuales =
+        updateHeladoDto.toppings ||
+        helado.detallesTopping.map((d) => ({
+          topping_id: d.topping_id,
+          cantidad: d.cantidad,
+        }));
+      helado.total_pedido = await this.calcularTotal(
+        saboresActuales,
+        toppingsActuales,
+      );
     }
-    return this.heladosRepository.save(helado)
-
+    return this.heladosRepository.save(helado);
   }
 
-  async updateStatus(id: number, status: UpdateStatusHelado ): Promise<Helado>{
-    const existingHelado = await this.heladosRepository.findOneBy({ id })
+  async updateStatus(id: number, status: UpdateStatusHelado): Promise<Helado> {
+    const existingHelado = await this.heladosRepository.findOneBy({ id });
     if (!existingHelado) {
-      throw new HttpException(` Helado Not Found `, HttpStatus.NOT_FOUND)
+      throw new HttpException(` Helado Not Found `, HttpStatus.NOT_FOUND);
     }
-    existingHelado.estado_pedido = status.status
-    return this.heladosRepository.save(existingHelado)
-    
+    existingHelado.estado_pedido = status.status;
+    return this.heladosRepository.save(existingHelado);
   }
 
   async remove(id: number): Promise<void> {
-    const result = await this.heladosRepository.delete(id)
-    if (result.affected === 0){
-      throw new HttpException(`Helado Not Found`, HttpStatus.NOT_FOUND)
+    const result = await this.heladosRepository.delete(id);
+    if (result.affected === 0) {
+      throw new HttpException(`Helado Not Found`, HttpStatus.NOT_FOUND);
     }
   }
 }

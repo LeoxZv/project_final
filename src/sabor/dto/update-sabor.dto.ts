@@ -1,17 +1,23 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateSaborDto } from './create-sabor.dto';
-import {IsNumber, IsOptional, IsPositive, IsString, Length } from 'class-validator';
+import {
+  IsNumber,
+  IsOptional,
+  IsPositive,
+  IsString,
+  Length,
+} from 'class-validator';
 
-export class UpdateSaborDto extends PartialType(CreateSaborDto){
-    @IsOptional()
-    @IsString()
-    @Length(5,20)
-    nombre?: string;
-    @IsOptional()
-    @IsString()
-    descripcion?: string;
-    @IsOptional()
-    @IsNumber({}, {message: 'El precio por bola debe ser un numero.'})
-    @IsPositive({ message: 'El precio de cada bola debe ser positivo'})
-    precio_bola?: number;
+export class UpdateSaborDto extends PartialType(CreateSaborDto) {
+  @IsOptional()
+  @IsString()
+  @Length(5, 20)
+  nombre?: string;
+  @IsOptional()
+  @IsString()
+  descripcion?: string;
+  @IsOptional()
+  @IsNumber({}, { message: 'El precio por bola debe ser un numero.' })
+  @IsPositive({ message: 'El precio de cada bola debe ser positivo' })
+  precio_bola?: number;
 }

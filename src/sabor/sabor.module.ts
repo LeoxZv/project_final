@@ -8,6 +8,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [TypeOrmModule.forFeature([Sabor])],
   controllers: [SaborController],
   providers: [SaborService],
-  exports: [TypeOrmModule]
+  exports: [TypeOrmModule],
 })
 export class SaborModule {}

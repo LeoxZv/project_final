@@ -8,6 +8,6 @@ import { Topping } from './entities/topping.entity';
   imports: [TypeOrmModule.forFeature([Topping])],
   controllers: [ToppingController],
   providers: [ToppingService],
-  exports: [TypeOrmModule]
+  exports: [TypeOrmModule],
 })
 export class ToppingModule {}
