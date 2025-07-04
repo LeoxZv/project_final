@@ -96,3 +96,139 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+
+
+1.  *Clona el repositorio del proyecto:*
+    Abre tu terminal y ejecuta:
+    bash
+    git clone [https://github.com/LeoxZv/project_final.git]
+    cd proyecto_final
+    
+
+2.  *Instala las dependencias del proyecto:*
+    Una vez dentro del directorio del proyecto, instala todas las librerías necesarias:
+    bash
+    npm install
+    
+
+3.  *Configura la conexión a la base de datos:*
+    En la *raíz de tu proyecto*, crea un archivo llamado .env y añade tus credenciales de MySQL. Asegúrate de que los valores coincidan con tu configuración local:
+    
+    DB_HOST=localhost
+    DB_PORT=3306
+    DB_USERNAME=root
+    DB_PASSWORD=tu_contraseña_mysql  # <--- ¡IMPORTANTE! Reemplaza con tu contraseña real de MySQL
+    DB_DATABASE=heladeria_db
+    PORT=3000
+    
+    *Nota Importante:* La base de datos inventario_quirurgico debe existir en tu servidor MySQL. Si aún no la has creado, hazlo antes de iniciar la API (puedes usar HeidiSQL en Laragon, phpMyAdmin, MySQL Workbench, o tu cliente MySQL preferido).
+
+4.  *Inicia el servidor de la API:*
+    Con la base de datos creada y el archivo .env configurado, puedes iniciar la aplicación en modo de desarrollo:
+    bash
+    npm run start:dev
+    
+    La API estará accesible en http://localhost:3000 (o el puerto que hayas especificado en tu archivo .env). TypeORM se encargará de sincronizar automáticamente el esquema de la base de datos con las entidades definidas en el código.
+
+5. *Pruebas*
+  *USER*
+  Creacion de User
+  {
+    "nombre": "Juan",
+    "apellido": "Perez",
+    "email": "juan.perez@example.com"
+  }
+
+  Actualizar User
+  {
+    "name": "pepito",
+    "telefono": "23232321"
+  }
+
+  *SABOR*
+  Creacion de sabor
+
+  {
+    "nombre": "Vainilla",
+    "descripcion": "El clásico sabor a vainilla.",
+    "precio_bola": 1.50,
+  }
+
+  Actualizacion
+
+  {
+    "nombre": "Vainilla",
+    "descripcion": "El clásico sabor a vainilla.",
+    "precio_bola": 1.50,
+  }
+
+  *TOPPING*
+  Creacion
+
+  {
+    "nombre": "Chispas",
+    "precio": 2.50,
+    descripcion": "Chispas de colores",
+  }
+
+  Actualizacion
+
+  {
+    "nombre": "chispas de chocolate",
+    "precio": 3.50,
+    descripcion": "Chispas de chocolate",
+  }
+  
+
+  *HELADO*
+  creacion
+
+  {
+  "cliente_id": 1,
+  "sabores": [
+   {
+      "sabor_id": 1,
+      "cantidad_bolas": 2
+    },
+    {
+      "sabor_id": 2,
+      "cantidad_bolas": 1
+    }
+  ],
+  "toppings": [
+    {
+      "topping_id": 1,
+      "cantidad": 1
+    },
+    {
+      "topping_id": 2, // Asumiendo otro topping existente
+      "cantidad": 2
+    }
+  ]
+}
+
+  Actualizacion
+  {
+  "sabores": [
+    {
+      "sabor_id": 1,
+      "cantidad_bolas": 2
+    },
+    {
+      "sabor_id": 2,
+      "cantidad_bolas": 1
+    }
+  ],
+  "toppings": [
+      {
+        "topping_id": 1,
+        "cantidad": 1
+      },
+      {
+        "topping_id": 2, // Asumiendo otro topping existente
+        "cantidad": 2
+      }
+    ]
+  }
