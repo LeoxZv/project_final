@@ -1,0 +1,473 @@
+type: collection.insomnia.rest/5.0
+name: Heladeria
+meta:
+  id: wrk_86372be370424903823520824c5d3980
+  created: 1751668108789
+  modified: 1751668108789
+  description: ""
+collection:
+  - name: Sabor
+    meta:
+      id: fld_aa7173e6a3064af3a49a17e85670ccf7
+      created: 1751668120747
+      modified: 1751669686671
+      sortKey: -1751668120747
+      description: ""
+    children:
+      - url: http://[::1]:3000/sabor/3
+        name: Delete
+        meta:
+          id: req_56f5648815db4e3fb92947cfdd35f88f
+          created: 1751669688484
+          modified: 1751669776796
+          isPrivate: false
+          description: ""
+          sortKey: -1751669688484
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/sabor/1
+        name: Update
+        meta:
+          id: req_4c193475c5ff422db3c79ce0e33016c4
+          created: 1751669690094
+          modified: 1751669784185
+          isPrivate: false
+          description: ""
+          sortKey: -1751669690094
+        method: PATCH
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/topping
+        name: Create
+        meta:
+          id: req_d4917875a3d7402b892ff5ac37e6e5fe
+          created: 1751669691431
+          modified: 1751669762122
+          isPrivate: false
+          description: ""
+          sortKey: -1751669691431
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/sabor/1
+        name: GetById
+        meta:
+          id: req_090691cfddf64a6d9c1e7f7ffcb0007f
+          created: 1751669692999
+          modified: 1751669757070
+          isPrivate: false
+          description: ""
+          sortKey: -1751669692999
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/sabor
+        name: GetAll
+        meta:
+          id: req_c2b9f209f6d845b48edd34f43e3eae39
+          created: 1751669695067
+          modified: 1751669749839
+          isPrivate: false
+          description: ""
+          sortKey: -1751669695067
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Topping
+    meta:
+      id: fld_ca722ae404ed491a852caf4303652045
+      created: 1751668128817
+      modified: 1751669795828
+      sortKey: -1751668128817
+      description: ""
+    children:
+      - url: http://[::1]:3000/topping/2
+        name: Delete
+        meta:
+          id: req_8521988e31a645f6a1ec603a64d26d65
+          created: 1751669585295
+          modified: 1751669683953
+          isPrivate: false
+          description: ""
+          sortKey: -1751669585295
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/topping/3
+        name: Update
+        meta:
+          id: req_0ef506cd24134b95976085c7f038fabd
+          created: 1751669586504
+          modified: 1751669677454
+          isPrivate: false
+          description: ""
+          sortKey: -1751669586504
+        method: PATCH
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/topping
+        name: Create
+        meta:
+          id: req_1daf35a5e11f4eab97484aec595fdf95
+          created: 1751669587917
+          modified: 1751669655651
+          isPrivate: false
+          description: ""
+          sortKey: -1751669587917
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/topping/1
+        name: GetById
+        meta:
+          id: req_d4bb094ef8584de48981afe016e3fe08
+          created: 1751669589722
+          modified: 1751669643522
+          isPrivate: false
+          description: ""
+          sortKey: -1751669589722
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/topping
+        name: GetAllTopping
+        meta:
+          id: req_a4ebd104248443e1b922e4ce8992b384
+          created: 1751669592481
+          modified: 1751669617338
+          isPrivate: false
+          description: ""
+          sortKey: -1751669592481
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Helado
+    meta:
+      id: fld_bbea2730fbf14f84b8146533c2391b7a
+      created: 1751668134704
+      modified: 1751669429639
+      sortKey: -1751668134704
+      description: ""
+    children:
+      - url: ""
+        name: DeleteHelado
+        meta:
+          id: req_d05f03c655d64f5f8b9e928f90bf28d6
+          created: 1751669397595
+          modified: 1751669561803
+          isPrivate: false
+          description: ""
+          sortKey: -1751669397595
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/helado/2
+        name: UpdateHelado
+        meta:
+          id: req_c7fe3be864e1435ab52a630e884e1a44
+          created: 1751669405889
+          modified: 1751669571863
+          isPrivate: false
+          description: ""
+          sortKey: -1751669405889
+        method: PATCH
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/helado
+        name: CreateHelado
+        meta:
+          id: req_abe9ba8d237b4e8fb3f95cc0db0c8eb9
+          created: 1751669407111
+          modified: 1751669511412
+          isPrivate: false
+          description: ""
+          sortKey: -1751669407111
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/helado/2
+        name: GetHeladoById
+        meta:
+          id: req_6ec47d4cb759435b87b1b516ea792057
+          created: 1751669408672
+          modified: 1751669486581
+          isPrivate: false
+          description: ""
+          sortKey: -1751669408672
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/helado
+        name: GetAllHelados
+        meta:
+          id: req_5e17b19ae8c24dbe84a7e11eac4067a1
+          created: 1751669410014
+          modified: 1751669447567
+          isPrivate: false
+          description: ""
+          sortKey: -1751669410014
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: User
+    meta:
+      id: fld_f43b409ef7a54bfbb46a50283cfb6810
+      created: 1751668217102
+      modified: 1751669807270
+      sortKey: -1751668217102
+      description: ""
+    children:
+      - url: http://[::1]:3000/user/2
+        name: UpdateUser
+        meta:
+          id: req_ed73a431b6cf49caa130c4abc9f0e118
+          created: 1751668235760
+          modified: 1751669528304
+          isPrivate: false
+          description: ""
+          sortKey: -1751668235760
+        method: PATCH
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/user
+        name: CreateUser
+        meta:
+          id: req_69a1c2255bf7476982da0a8979a09fae
+          created: 1751668237961
+          modified: 1751669520831
+          isPrivate: false
+          description: ""
+          sortKey: -1751668237961
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/user/1
+        name: GetUserById
+        meta:
+          id: req_6ea6946363914206895cd5591ed05e6f
+          created: 1751668239461
+          modified: 1751668433807
+          isPrivate: false
+          description: ""
+          sortKey: -1751668239461
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/user
+        name: GetAllUsers
+        meta:
+          id: req_a36d528484224e4dbc18e4b76aa841cc
+          created: 1751668240735
+          modified: 1751668392751
+          isPrivate: false
+          description: ""
+          sortKey: -1751668240735
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://[::1]:3000/user/1
+        name: DeleteUser
+        meta:
+          id: req_4e70c8b8594c43ddb409b29d236b33b6
+          created: 1751668450580
+          modified: 1751669534462
+          isPrivate: false
+          description: ""
+          sortKey: -1751668235660
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_5af86ede3e1ee9b3e4ab3c93b07ab725df9f8da0
+    created: 1751668108811
+    modified: 1751668108811
+environments:
+  name: Base Environment
+  meta:
+    id: env_5af86ede3e1ee9b3e4ab3c93b07ab725df9f8da0
+    created: 1751668108800
+    modified: 1751668108800
+    isPrivate: false
